@@ -26,3 +26,12 @@ backend/uploads/
 backend/uploads_adapt/
 backend/uploads_cls/
 backend/uploads_seg/
+
+# fonts
+backend/fonts/NanumGothic.ttf
+
+# visualization outputs
+backend/vis_output_segformer/
+
+# agent studio assets
+agent-studio/public/robot.png
