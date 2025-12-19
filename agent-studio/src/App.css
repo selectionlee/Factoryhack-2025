@@ -1,0 +1,788 @@
+/* ================================
+    Color Palette (Peach-Coral Pastel - CLEAN BACKGROUND + SOFT SHADOWS)
+================================ */
+
+:root {
+  /* 버튼 색상 (Peach/Coral) */
+  --color-main-dark: #FF8A65; /* Deep Coral */
+  --color-main-light: #FFAB91; /* Main Peach Coral */
+  --color-accent-light: #FFC2A5; /* Lighter Peach Accent */
+  --color-soft-bg: #FFEDD5; /* Very Light Peach (Secondary button) */
+  --color-border-light: #FFD5B8; /* Light Peach Border */
+
+  /* 배경 색상 (COOL TONE - 누런색 제거) */
+  --color-bg-base: #FFFFFF;
+  --color-bg-subtle: #F7F9FC; /* Clean, Cool Light Gray */
+  --color-bg-sidebar: #FAFBFC; /* Very light cool-gray for sidebar */
+  
+  /* 텍스트 색상 */
+  --color-text-dark: #333333; /* Darker, neutral gray */
+  --color-text-mid: #666666; /* Mid neutral gray */
+  
+  /* 소프트 그림자 변수 정의 */
+  --shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.05); /* 카드에 사용될 부드러운 그림자 */
+  --shadow-button-hover: 0 6px 16px rgba(255, 138, 101, 0.2); /* 버튼 호버 시 약간 강조되는 그림자 */
+  --shadow-button-primary: 0 8px 18px rgba(255, 138, 101, 0.3); /* 메인 버튼에 사용될 그림자 */
+}
+
+/* ================================
+    Reset & Global
+================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", "Source Sans Pro",
+    -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Noto Sans KR", sans-serif;
+  /* BODY 배경: 가장 깨끗하고 시원한 톤의 배경 그라데이션 적용 */
+  background: radial-gradient(circle at top left, #ffffff 0%, #f7f9fb 35%, #f2f4f6 100%);
+  color: var(--color-text-dark); 
+}
+
+/* ================================
+    App Wrapper
+================================ */
+
+.fh-app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+}
+
+.fh-shell {
+  display: flex;
+  width: min(1320px, 100%);
+  height: min(720px, calc(100vh - 64px));
+  border-radius: 28px;
+  background: var(--color-bg-base);
+  border: 1px solid #e5e7eb;
+  /* UI 전체 쉘 그림자는 유지 */
+  box-shadow:
+    0 26px 60px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(248, 250, 252, 0.9);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* 살짝 유리 느낌 오버레이 (피치 색상 사용) */
+.fh-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top left,
+    rgba(255, 171, 145, 0.09) 0, /* Light Peach for highlight */
+    transparent 45%);
+}
+
+/* ================================
+    Left Sidebar
+================================ */
+
+.fh-sidebar {
+  width: 260px;
+  padding: 20px 10px;
+  border-right: 1px solid #e5e7eb;
+  /* 사이드바 배경 수정: 깨끗한 쿨톤 배경 적용 */
+  background: var(--color-bg-sidebar); 
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo block */
+
+.fh-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 2px 2px;
+}
+
+.fh-logo-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  /* 로고 닷에 부드러운 그림자 추가 */
+  background:
+    radial-gradient(circle at 0 0, #FFAB91 0, #FF8A65 60%, #FFC2A5 100%);
+  box-shadow: 0 4px 12px rgba(255, 138, 101, 0.4); 
+}
+
+.fh-logo-text {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #111827;
+}
+
+.fh-logo-sub {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* 공통 카드 (PRODUCT, PIPELINE, REPORT, TIP 등) */
+
+.fh-section {
+  /* 섹션 카드에 부드러운 그림자 추가 */
+  background: var(--color-bg-base);
+  border-radius: 22px;
+  padding: 16px 22px 18px 22px;
+  font-size: 13px;
+  border: 1px solid #e5e7eb;
+  box-shadow: var(--shadow-soft); /* 부드러운 그림자 */
+}
+
+/* 섹션 헤더 (아이콘 + 타이틀 느낌) */
+
+.fh-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #6b7280;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.fh-section-title::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  /* Light Peach Accent */
+  background: #FFEDD5; 
+  box-shadow: 0 0 0 1px #FFD5B8 inset; 
+}
+
+/* 셀렉트 */
+
+.fh-select {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  padding: 8px 14px;
+  font-size: 13px;
+  /* 셀렉트 배경 수정: 깨끗한 쿨톤 연회색 */
+  background: var(--color-bg-subtle); 
+  color: var(--color-text-dark);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    transform 0.08s ease;
+}
+
+.fh-select:hover {
+  /* Hover 시 그림자 추가 */
+  border-color: var(--color-main-light);
+  background: var(--color-soft-bg);
+  box-shadow: 0 4px 10px rgba(255, 171, 145, 0.15); /* 부드러운 호버 그림자 */
+  transform: translateY(-0.5px);
+}
+
+.fh-step-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #4b5563;
+}
+
+.fh-step-list li {
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+/* Defect Report 카드 내부 텍스트 */
+
+.fh-section-note {
+  margin-top: auto;
+}
+
+/* Tip/Note 제목 */
+
+.fh-note-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+/* 일반 설명 텍스트 */
+
+.fh-section-note p {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ================================
+    Tip Card (하단 Tip만 강조) - 유지 (그림자 추가)
+================================ */
+
+.fh-section.fh-tip-card {
+  padding: 16px 26px 4px 26px;
+  /* 팁 카드는 경고/정보의 의미로 노란색/푸른색 유지 */
+  background: linear-gradient(135deg, #fef9c3 0%, #ecfeff 40%, #ffffff 100%);
+  border: 1px solid #fee2a2;
+  box-shadow: var(--shadow-soft); /* 부드러운 그림자 */
+}
+
+.fh-section.fh-tip-card .fh-note-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: #92400e;
+}
+
+.fh-section.fh-tip-card .fh-note-title::before {
+  content: "💡";
+  font-size: 14px;
+}
+
+.fh-section.fh-tip-card ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.fh-section.fh-tip-card ul li {
+  margin-bottom: 3px;
+}
+
+/* ================================
+    Center Detail Pane
+================================ */
+
+.fh-detail-pane {
+  flex: 1.5;
+  min-width: 460px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e5e7eb;
+  /* 디테일 창 배경 수정: 깨끗한 쿨톤 서브 배경 사용 */
+  background: var(--color-bg-subtle); 
+  position: relative;
+  z-index: 1;
+}
+
+/* 공통 헤더 (중앙/우측) */
+
+.fh-detail-header,
+.fh-chat-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  /* 헤더 배경 수정: 깨끗한 쿨톤 그라데이션 */
+  background: linear-gradient(90deg, #f7f9fb 0%, #ffffff 40%, #f7f9fb 100%);
+}
+
+.fh-detail-title,
+.fh-chat-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  color: #111827;
+}
+
+.fh-detail-subtitle,
+.fh-chat-subtitle {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* Detail body */
+
+.fh-detail-body {
+  padding: 18px 22px 20px;
+  flex: 1;
+  overflow-y: auto;
+  font-size: 13px;
+  color: var(--color-text-dark);
+}
+
+/* ================================
+    Form Controls & Image Preview
+================================ */
+
+.fh-form-group {
+  margin-bottom: 14px;
+}
+
+.fh-form-group label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.fh-file-input {
+  display: block;
+  border-radius: 999px;
+  border: 1px dashed var(--color-border-light); /* Light Peach Border */
+  padding: 9px 14px;
+  font-size: 13px;
+  color: #64748b;
+  background: var(--color-bg-subtle); /* Subtle Background 수정 */
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.12s ease;
+}
+
+.fh-file-input:hover {
+  border-color: var(--color-main-light); 
+  background: var(--color-soft-bg); 
+  box-shadow: 0 4px 10px rgba(255, 171, 145, 0.15); /* 부드러운 호버 그림자 */
+  transform: translateY(-1px);
+}
+
+.fh-file-input input {
+  display: none;
+}
+
+.fh-image-preview-block {
+  margin-bottom: 14px;
+}
+
+.fh-preview-label {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.fh-image-preview {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  object-fit: contain;
+  max-height: 260px;
+  box-shadow: var(--shadow-soft); /* 이미지 미리보기에 부드러운 그림자 추가 */
+}
+
+/* ================================
+    Buttons / Pipeline Step Buttons
+================================ */
+
+.fh-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fh-button-row button {
+  flex: 1;
+  min-width: 120px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: none;
+  padding: 7px 12px;
+  cursor: pointer;
+  /* Secondary Button Style (Soft Peach) */
+  background: var(--color-soft-bg); 
+  color: var(--color-text-mid); 
+  border: 1px solid var(--color-border-light); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 기본 버튼에 아주 얇은 그림자 */
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease,
+    border-color 0.15s ease;
+}
+
+.fh-button-row button:hover:not(:disabled) {
+  /* Hover 시 그림자 추가 */
+  background: #FFE0B2; 
+  box-shadow: var(--shadow-button-hover); /* 호버 그림자 강조 */
+  transform: translateY(-1px);
+  border-color: var(--color-main-light);
+}
+
+.fh-button-row button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* 클릭 시 그림자 축소 */
+}
+
+.fh-button-row button:disabled {
+  opacity: 0.55;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* 작은 버튼 행 (3단계용) */
+
+.fh-button-row-sm button {
+  flex: 0;
+  font-size: 11px;
+  padding: 4px 10px;
+}
+
+/* 선택된 버튼 (Primary) */
+
+.fh-btn-primary {
+  /* Main Gradient Peach/Coral */
+  background: linear-gradient(135deg, var(--color-main-light), var(--color-main-dark)) !important;
+  color: #ffffff !important;
+  border-color: var(--color-main-dark) !important;
+  box-shadow: var(--shadow-button-primary) !important; /* 메인 버튼 그림자 추가 */
+}
+
+/* 분석 카드 */
+
+.fh-analysis-section {
+  margin-top: 14px;
+}
+
+.fh-analysis-section h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #111827;
+}
+
+.fh-analysis-card {
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  font-size: 12px;
+  background: var(--color-bg-subtle); /* Subtle Background 수정 */
+  box-shadow: var(--shadow-soft); /* 부드러운 그림자 */
+}
+
+.fh-analysis-placeholder {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* ================================
+    2단계 마스크 (정사각형)
+================================ */
+
+.fh-mask-placeholder {
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  /* Dark Background for Image Masking 유지 */
+  background: radial-gradient(circle at top, #020617 0, #020617 40%, #000000 100%); 
+  margin: 0 auto 8px;
+  max-width: 260px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft); /* 부드러운 그림자 */
+}
+
+.fh-mask-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.fh-mask-desc {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+/* ================================
+    3단계 Chip UI
+================================ */
+
+.fh-adapt-choice-block {
+  margin-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+}
+
+.fh-adapt-label {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.fh-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.fh-chip {
+  border-radius: 999px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-bg-subtle); /* Subtle Background 수정 */
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--color-text-mid);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 칩에 아주 미세한 그림자 */
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+.fh-chip:hover {
+  /* Hover 시 그림자 추가 */
+  background: var(--color-soft-bg);
+  border-color: var(--color-accent-light);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); 
+  transform: translateY(-1px);
+}
+
+.fh-chip-selected {
+  /* Main Chip Selected Style (그림자 추가) */
+  background: linear-gradient(135deg, var(--color-main-dark), var(--color-main-light));
+  border-color: var(--color-main-dark);
+  color: #ffffff;
+  box-shadow: var(--shadow-button-primary); /* 메인 버튼 그림자 */
+}
+
+.fh-adapt-selected {
+  font-size: 11px;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+/* ================================
+    Right Chat Pane
+================================ */
+
+.fh-chat-pane {
+  flex: 1;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-subtle); /* Subtle Background 수정 */
+  position: relative;
+  z-index: 1;
+}
+
+/* Messages */
+
+.fh-chat-messages {
+  flex: 1;
+  padding: 18px 24px;
+  overflow-y: auto;
+}
+
+.fh-chat-messages::-webkit-scrollbar,
+.fh-detail-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fh-chat-messages::-webkit-scrollbar-thumb,
+.fh-detail-body::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+
+/* Message rows */
+
+.fh-msg-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.fh-msg-user {
+  flex-direction: row-reverse;
+}
+
+/* Message bubble */
+
+.fh-msg-body {
+  max-width: 72%;
+}
+
+.fh-msg-role {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 2px;
+}
+
+.fh-msg-text {
+  font-size: 13px;
+  padding: 9px 13px;
+  border-radius: 16px;
+  line-height: 1.55;
+}
+
+/* User bubble */
+
+.fh-msg-user .fh-msg-text {
+  /* Main Gradient Peach/Coral 유지 (그림자 추가) */
+  background: linear-gradient(135deg, var(--color-main-light), var(--color-main-dark));
+  color: #ffffff;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 6px 14px rgba(255, 138, 101, 0.3); /* 말풍선 그림자 */
+}
+
+/* Assistant bubble */
+
+.fh-msg-assistant .fh-msg-text {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 6px;
+  color: #111827;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 말풍선 그림자 */
+}
+
+/* Chat input bottom bar → 캡슐형 바 */
+
+.fh-chat-input-bar {
+  padding: 14px 22px 18px;
+  border-top: none;
+  background: transparent;
+}
+
+.fh-chat-form {
+  display: flex;
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border-light); /* Light Peach Border 유지 */
+  box-shadow: var(--shadow-soft); /* 부드러운 그림자 */
+}
+
+.fh-chat-input {
+  flex: 1;
+  border-radius: 999px;
+  border: none;
+  padding: 7px 14px;
+  font-size: 13px;
+  background: transparent;
+  color: var(--color-text-dark);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.fh-chat-input::placeholder {
+  color: #9ca3af;
+}
+
+.fh-chat-input:focus {
+  outline: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.fh-chat-send {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 22px;
+  font-size: 13px;
+  /* Main Gradient Peach/Coral 유지 */
+  background: linear-gradient(135deg, var(--color-main-light), var(--color-main-dark));
+  color: #ffffff;
+  box-shadow: var(--shadow-button-primary); /* 메인 버튼 그림자 */
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    filter 0.12s ease;
+}
+
+.fh-chat-send:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 138, 101, 0.4); /* 호버 시 그림자 강조 */
+  filter: brightness(1.04);
+}
+
+.fh-chat-send:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3); /* 클릭 시 그림자 축소 */
+}
+
+.fh-chat-send:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}
+
+.fh-chat-hint {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* 아바타를 robot.png로 쓰는 override (이미지 추가 시) */
+
+.fh-msg-avatar {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.fh-avatar-img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+/* Report 버튼 (좌측 사이드바) */
+
+.fh-report-btn {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 9px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  /* Main Gradient Peach/Coral 유지 */
+  background: linear-gradient(135deg, var(--color-main-light), var(--color-main-dark));
+  color: #ffffff;
+  box-shadow: var(--shadow-button-primary); /* 메인 버튼 그림자 */
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    filter 0.12s ease;
+}
+
+.fh-report-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 138, 101, 0.4); /* 호버 시 그림자 강조 */
+  filter: brightness(1.03);
+}
+
+.fh-report-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3); /* 클릭 시 그림자 축소 */
+}
+
+.fh-report-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}

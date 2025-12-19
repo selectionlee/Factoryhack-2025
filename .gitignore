@@ -1,0 +1,28 @@
+# uploads / outputs
+uploads/
+uploads_adapt/
+uploads_cls/
+uploads_seg/
+
+# model weights / checkpoints
+*.pth
+*.pt
+*.safetensors
+backend/hf_output_defect/
+backend/**/checkpoint-*/
+backend/**/checkpoints/
+
+# datasets
+backend/data/
+backend/DS-MVTec/
+
+# editor / env
+.history/
+.env
+.env.*
+
+uploads*/
+backend/uploads/
+backend/uploads_adapt/
+backend/uploads_cls/
+backend/uploads_seg/
